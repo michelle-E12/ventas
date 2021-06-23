@@ -103,6 +103,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\BL.Ventas.Cliente.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.ClientesBL.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.Producto.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.ProductosBL.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.SeguridadBL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AutoloteL3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL.Ventas\BL.Ventas.csproj">
+      <Project>{bfd1c9fc-be50-40b3-bfdc-5ac25787374a}</Project>
+      <Name>BL.Ventas</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

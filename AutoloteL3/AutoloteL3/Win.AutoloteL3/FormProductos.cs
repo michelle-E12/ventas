@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Ventas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace Win.AutoloteL3
 {
     public partial class FormProductos : Form
     {
+        ProductosBL _productos;
+
         public FormProductos()
         {
             InitializeComponent();
+
+            _productos = new ProductosBL();
+            listaProductosBindingSource.DataSource = _productos.ObtenerProductos();
         }
     }
 }
