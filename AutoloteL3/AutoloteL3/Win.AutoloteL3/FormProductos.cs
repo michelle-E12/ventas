@@ -33,6 +33,7 @@ namespace Win.AutoloteL3
             {
                 listaProductosBindingSource.ResetBindings(false);
                 DeshabilitarHabilitarBotones(true);
+                MessageBox.Show("Producto guardado");
             }
             else
             {
