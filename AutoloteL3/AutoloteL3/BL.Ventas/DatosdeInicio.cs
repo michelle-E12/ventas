@@ -41,14 +41,6 @@ namespace BL.Ventas
             categoria4.Descripcion = "Mecánico";
             contexto.Categorias.Add(categoria4);
 
-            /*var cliente1 = new Cliente();
-            cliente1.Nombre = "Juan Ortega";
-            contexto.Clientes.Add(cliente1);
-
-            var cliente2 = new Cliente();
-            cliente2.Nombre = "Tony Clark";
-            contexto.Clientes.Add(cliente2);*/
-
             base.Seed(contexto);
         }
     }

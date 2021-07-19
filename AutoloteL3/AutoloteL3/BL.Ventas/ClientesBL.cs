@@ -28,15 +28,6 @@ namespace BL.Ventas
             return ListaClientes;
         }
 
-        public void CancelarCambios()
-        {
-            foreach (var item in _contexto.ChangeTracker.Entries())
-            {
-                item.State = EntityState.Unchanged;
-                item.Reload();
-            }
-        }
-
         public Resultado GuardarCliente(Cliente cliente)
         {
             var resultado = Validar(cliente);
