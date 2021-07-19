@@ -121,6 +121,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BL.Ventas.Categoria.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.CategoriasBL.datasource" />
     <None Include="Properties\DataSources\BL.Ventas.Cliente.datasource" />
     <None Include="Properties\DataSources\BL.Ventas.ClientesBL.datasource" />
     <None Include="Properties\DataSources\BL.Ventas.Contexto.datasource" />
@@ -128,6 +130,8 @@
     <None Include="Properties\DataSources\BL.Ventas.ProductosBL.datasource" />
     <None Include="Properties\DataSources\BL.Ventas.Resultado.datasource" />
     <None Include="Properties\DataSources\BL.Ventas.SeguridadBL.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.Tipo.datasource" />
+    <None Include="Properties\DataSources\BL.Ventas.TipoBl.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -92,10 +92,10 @@ namespace Win.AutoloteL3
         }
 
         private void toolStripButtonCancelar_Click(object sender, EventArgs e)
-        { 
-
+        {
+            _clientesBL.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
-            Eliminar(0);
+            
         }
     }
 }
