@@ -42,16 +42,37 @@ namespace Win.AutoloteL3
             formClientes.Show();
         }
 
-        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void rentarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var formVentas = new FormVentas();
-            formVentas.MdiParent = this;
-            formVentas.Show();
+            var formRentas = new FormVentas();
+            formRentas.MdiParent = this;
+            formRentas.Show();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
             Login();
         }
+
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formFactura = new FormFactura();
+            formFactura.MdiParent = this;
+            formFactura.Show();
+        }
+
+        /*private void reporteDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteProductos = new FormReporteProductos();
+            formReporteProductos.MdiParent = this;
+            formReporteProductos.Show();
+        }
+
+        private void reporteDeFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteFacturas = new FormReporteFacturas();
+            formReporteFacturas.MdiParent = this;
+            formReporteFacturas.Show();
+        }*/
     }
 }

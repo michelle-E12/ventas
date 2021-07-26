@@ -26,7 +26,7 @@ namespace BL.Ventas
             contexto.Usuarios.Add(usuarioAdmin2);
 
             var categoria1 = new Categoria();
-            categoria1.Descripcion = "4x4";
+            categoria1.Descripcion = "Mecanico";
             contexto.Categorias.Add(categoria1);
 
             var categoria2 = new Categoria();
@@ -34,11 +34,11 @@ namespace BL.Ventas
             contexto.Categorias.Add(categoria2);
 
             var categoria3 = new Categoria();
-            categoria3.Descripcion = "4x2";
+            categoria3.Descripcion = "Tritonico";
             contexto.Categorias.Add(categoria3);
 
             var categoria4 = new Categoria();
-            categoria4.Descripcion = "Mecánico";
+            categoria4.Descripcion = "Automatico palanca timon";
             contexto.Categorias.Add(categoria4);
 
             base.Seed(contexto);
