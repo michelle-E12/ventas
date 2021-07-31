@@ -61,7 +61,7 @@ namespace Win.AutoloteL3
             formFactura.Show();
         }
 
-        /*private void reporteDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reporteDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var formReporteProductos = new FormReporteProductos();
             formReporteProductos.MdiParent = this;
@@ -73,6 +73,13 @@ namespace Win.AutoloteL3
             var formReporteFacturas = new FormReporteFacturas();
             formReporteFacturas.MdiParent = this;
             formReporteFacturas.Show();
-        }*/
+        }
+
+        private void reporteDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteClientes = new FormReporteClientes();
+            formReporteClientes.MdiParent = this;
+            formReporteClientes.Show();
+        }
     }
 }
