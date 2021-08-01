@@ -34,6 +34,8 @@ namespace Win.AutoloteL3 {
         
         private global::System.Data.DataRelation relationCategoria_Producto;
         
+        private global::System.Data.DataRelation relationCliente_Factura;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -269,6 +271,7 @@ namespace Win.AutoloteL3 {
                 }
             }
             this.relationCategoria_Producto = this.Relations["Categoria_Producto"];
+            this.relationCliente_Factura = this.Relations["Cliente_Factura"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -291,6 +294,10 @@ namespace Win.AutoloteL3 {
                         this.tableCategoria.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableProducto.CategoriaIdColumn}, false);
             this.Relations.Add(this.relationCategoria_Producto);
+            this.relationCliente_Factura = new global::System.Data.DataRelation("Cliente_Factura", new global::System.Data.DataColumn[] {
+                        this.tableCliente.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFactura.ClienteIdColumn}, false);
+            this.Relations.Add(this.relationCliente_Factura);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1162,16 +1169,19 @@ namespace Win.AutoloteL3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FacturaRow AddFacturaRow(System.DateTime Fecha, int ClienteId, double Subtotal, double Impuesto, double Total, bool Activo) {
+            public FacturaRow AddFacturaRow(System.DateTime Fecha, ClienteRow parentClienteRowByCliente_Factura, double Subtotal, double Impuesto, double Total, bool Activo) {
                 FacturaRow rowFacturaRow = ((FacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Fecha,
-                        ClienteId,
+                        null,
                         Subtotal,
                         Impuesto,
                         Total,
                         Activo};
+                if ((parentClienteRowByCliente_Factura != null)) {
+                    columnValuesArray[2] = parentClienteRowByCliente_Factura[0];
+                }
                 rowFacturaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFacturaRow);
                 return rowFacturaRow;
@@ -1996,6 +2006,17 @@ namespace Win.AutoloteL3 {
                     this[this.tableFactura.ActivoColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClienteRow ClienteRow {
+                get {
+                    return ((ClienteRow)(this.GetParentRow(this.Table.ParentRelations["Cliente_Factura"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Cliente_Factura"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2144,6 +2165,17 @@ namespace Win.AutoloteL3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDireccionNull() {
                 this[this.tableCliente.DireccionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FacturaRow[] GetFacturaRows() {
+                if ((this.Table.ChildRelations["Cliente_Factura"] == null)) {
+                    return new FacturaRow[0];
+                }
+                else {
+                    return ((FacturaRow[])(base.GetChildRows(this.Table.ChildRelations["Cliente_Factura"])));
+                }
             }
         }
         
@@ -2774,14 +2806,14 @@ SELECT ID, Descripcion, CategoriaId, Precio, Existencia, Foto, Activo FROM Produ
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Categoria] ([Descripcion]) VALUES (@Descripcion);\r\nSELECT Id, " +
-                "Descripcion FROM Categoria WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Categoria] ([Descripcion]) VALUES (@Descripcion);\nSELECT Id, D" +
+                "escripcion FROM Categoria WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Categoria] SET [Descripcion] = @Descripcion WHERE (([Id] = @Origina" +
-                "l_Id));\r\nSELECT Id, Descripcion FROM Categoria WHERE (Id = @Id)";
+                "l_Id));\nSELECT Id, Descripcion FROM Categoria WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3424,9 +3456,9 @@ SELECT Id, Fecha, ClienteId, Subtotal, Impuesto, Total, Activo FROM Factura WHER
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Cliente] ([Nombre], [Identidad], [Telefono], [Direccion], [Act" +
-                "ivo]) VALUES (@Nombre, @Identidad, @Telefono, @Direccion, @Activo);\r\nSELECT ID, " +
-                "Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID = SCOPE_ID" +
-                "ENTITY())";
+                "ivo]) VALUES (@Nombre, @Identidad, @Telefono, @Direccion, @Activo);\nSELECT ID, N" +
+                "ombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID = SCOPE_IDE" +
+                "NTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Identidad", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Identidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3816,6 +3848,15 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._clienteTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._clienteTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._productoTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Producto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -3831,15 +3872,6 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._facturaTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._clienteTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._clienteTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3861,6 +3893,14 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._clienteTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._clienteTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._productoTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Producto.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3877,14 +3917,6 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._clienteTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._clienteTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -3895,14 +3927,6 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._clienteTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._clienteTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._facturaTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Factura.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -3916,6 +3940,14 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._productoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._clienteTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Cliente.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._clienteTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

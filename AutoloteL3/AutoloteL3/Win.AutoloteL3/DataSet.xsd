@@ -363,6 +363,7 @@ SELECT ID, Nombre, Identidad, Telefono, Direccion, Activo FROM Cliente WHERE (ID
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="Categoria_Producto" msdata:parent="Categoria" msdata:child="Producto" msdata:parentkey="Id" msdata:childkey="CategoriaId" msprop:Generator_UserChildTable="Producto" msprop:Generator_ChildPropName="GetProductoRows" msprop:Generator_UserRelationName="Categoria_Producto" msprop:Generator_ParentPropName="CategoriaRow" msprop:Generator_RelationVarName="relationCategoria_Producto" msprop:Generator_UserParentTable="Categoria" />
+      <msdata:Relationship name="Cliente_Factura" msdata:parent="Cliente" msdata:child="Factura" msdata:parentkey="ID" msdata:childkey="ClienteId" msprop:Generator_UserChildTable="Factura" msprop:Generator_ChildPropName="GetFacturaRows" msprop:Generator_UserRelationName="Cliente_Factura" msprop:Generator_RelationVarName="relationCliente_Factura" msprop:Generator_UserParentTable="Cliente" msprop:Generator_ParentPropName="ClienteRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

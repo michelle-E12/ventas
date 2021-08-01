@@ -41,6 +41,7 @@
             this.reporteDeFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subreporteDeFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,6 +130,8 @@
             // 
             // reporteDeFacturasToolStripMenuItem
             // 
+            this.reporteDeFacturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.subreporteDeFacturasToolStripMenuItem});
             this.reporteDeFacturasToolStripMenuItem.Name = "reporteDeFacturasToolStripMenuItem";
             this.reporteDeFacturasToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
             this.reporteDeFacturasToolStripMenuItem.Text = "Reporte de Facturas";
@@ -185,5 +188,6 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeFacturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subreporteDeFacturasToolStripMenuItem;
     }
 }
