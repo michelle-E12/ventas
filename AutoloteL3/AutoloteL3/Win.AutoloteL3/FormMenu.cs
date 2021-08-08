@@ -26,6 +26,8 @@ namespace Win.AutoloteL3
         {
             var formLogin = new FormLogin();
             formLogin.ShowDialog();
+
+            toolStripStatusLabel1.Text = "Usuario:  " + Utilidades.NombreUsuario;
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,13 +42,6 @@ namespace Win.AutoloteL3
             var formClientes = new FormClientes();
             formClientes.MdiParent = this;
             formClientes.Show();
-        }
-
-        private void rentarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var formRentas = new FormVentas();
-            formRentas.MdiParent = this;
-            formRentas.Show();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
